@@ -19,7 +19,7 @@ Read the header files for more documentation on the provided macros. See the [`t
 
 Note that the functions relying on Libpp for dealing with variable arguments (e.g. `REQUIRE` and `ANY`) can only take as many arguments as the limit that Libpp was built with - by default, this limit is 128. If you want to accept more or less, build Libpp with the `LIBPP_LIMIT` set to your desired value: e.g: `LIBPP_LIMIT=256 make -B libpp`.
 
-[Questions](https://github.com/mcinglis/libmacro/issues?labels=question), [discussion](https://github.com/mcinglis/libmacro/issues?labels=discussion), [bug reports](https://github.com/mcinglis/libmacro/issues?labels=bug), [feature requests](https://github.com/mcinglis/libmacro/issues?labels=enhancement), and pull requests are very welcome.
+[Questions](https://github.com/mcinglis/libmacro/labels/question), [discussion](https://github.com/mcinglis/libmacro/labels/discussion), [bug reports](https://github.com/mcinglis/libmacro/labels/bug), [feature requests](https://github.com/mcinglis/libmacro/labels/enhancement), and pull requests are very welcome.
 
 
 ## Releases
