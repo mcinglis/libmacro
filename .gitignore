@@ -1,0 +1,6 @@
+*.o
+*.dep.mk
+.make
+deps
+tests/*
+!tests/*.*

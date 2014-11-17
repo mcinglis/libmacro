@@ -1,0 +1,5 @@
+[DEBUG] main (tests/debug.c:7): debugging, la di da
+[DEBUG] main (tests/debug.c:8): more debugging with 
+ a linebreak!
+[DEBUG] main (tests/debug.c:9): formatting, oooh: 390 test 99.73
+[DEBUG] main (tests/debug.c:10): all the printf formatting modifiers available:                 see?

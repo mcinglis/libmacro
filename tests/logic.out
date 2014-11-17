@@ -1,0 +1,14 @@
+AND( true, false ) = 0
+OR( 0, 9283 ) = 1
+NAND( OR( 0, false ), 76 ) = 1
+NOR( 0, true ) = 0
+IMPLIES( -23 < 0, 87 > -22 ) = 1
+ALL( false, false, false, true ) = 0
+ANY( false, false, false, true ) = 1
+NONE( false, false, false, true ) = 0
+ALL( false, false, false, false ) = 0
+ANY( false, false, false, false ) = 0
+NONE( false, false, false, false ) = 1
+ALL( true, true, true, true ) = 1
+ANY( true, true, true, true ) = 1
+NONE( true, true, true, true ) = 0

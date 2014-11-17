@@ -1,0 +1,3 @@
+NELEM( xs ) = 8
+NELEM( str ) = 26
+NELEM( ws ) = 4

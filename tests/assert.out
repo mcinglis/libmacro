@@ -1,0 +1,1 @@
+assert: tests/assert.c:10: main: Assertion `2398 > 298731' failed.
