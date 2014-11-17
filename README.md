@@ -11,7 +11,7 @@
 
 - `FREE(...)` takes a series of pointers to allocated memory, and `free()`s each one individually.
 
-- `ANY(...)`, `ALL(...)`, and `NONE(...)` take a series of scalar expressions, and logically evaluate them according to the short-circuiting behavior of `&&` and `||`. For example, `ALL(a,b,c,d)` will only evaluate `a` and `b` if `c` is false.
+- `ANY(...)`, `ALL(...)`, and `NONE(...)` take a series of scalar expressions, and logically evaluate them according to the short-circuiting behavior of `&&` and `||`. For example, `ALL(a,b,c,d)` will only evaluate `a`, `b` and `c` if `c` is false.
 
 - `DEBUG("value = %d", x)` provides an easy way to print debugging statements that include the file, line and function they were made on. If you find yourself regularly inserting `printf()` calls to work out what a program is doing, you'll find `DEBUG` very handy.
 
@@ -47,11 +47,11 @@ pass: require
 
 ### What's all that dependency stuff in the Makefile?
 
-It automates the fetching of the dependencies, checking out the right versions, and building them. In a similar way, you could specify Libmacro as a dependency, but override the `$DEPS_ROOT` environment variable to download it into the top-level directory. Then, dependents of Libmacro wouldn't need to know its dependencies, because its build process handles it. Dependencies are hidden and build processes are decoupled!
+It automates the fetching of the dependencies, checking out the right versions, and building them. In a similar way, you could specify Libmacro as a dependency, but override the `$DEPS_ROOT` environment variable to download it into the top-level directory. Thus, sub-dependencies are hidden and build processes are decoupled.
 
 ### Why don't you namespace this stuff?
 
-These macros are totally generic and universally useful, so I don't see much need to specify their names as belonging to Libmacro. The likelihood of name clashes are low anyway, particularly since the headers are decoupled so that you can include them individually as you require.
+These macros are generic and universally useful, so I don't any need to specify their names as belonging to Libmacro. It would be semantically awkward. The likelihood of name clashes are low anyway, particularly since the headers are decoupled so that you can include them individually as you require. Similarly, it should be fairly obvious where each macro came from.
 
 If you really need a different name for an identifier, maintain a fork of the repository and pull updates from this one as you want them.
 
@@ -63,7 +63,7 @@ I don't like unified headers, and I don't want to encourage their use. Unified h
 - make it harder to determine where a certain identifier came from;
 - make code slower to compile and link.
 - pollute the namespace, which can lead to all kinds of nasty bugs;
-- make it harder to maintain API and ABI compatibility;
+- make it harder to maintain API and ABI compatibility.
 
 If you need to include six header files from Libmacro, your source file is probably doing too much, and should be broken up.
 
@@ -78,7 +78,7 @@ Libmacro is distributed in the hope that it will be useful, but **without any wa
 
 You should have received a copy of the GNU Affero General Public License along with Libmacro. If not, see <https://gnu.org/licenses/>.
 
-[Contact me](mailto:me@minglis.id.au) for commercial licensing options.
+[Contact me](mailto:me@minglis.id.au) for proprietary licensing options.
 
 ### Why AGPL?
 
