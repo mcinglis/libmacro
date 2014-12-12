@@ -17,9 +17,7 @@
 
 Read the header files for more documentation on the provided macros. See the [`tests/`](tests/) directory for example usage of the macros, and the expected output.
 
-Note that the functions relying on Libpp for dealing with variable arguments (e.g. `REQUIRE` and `ANY`) can only take as many arguments as the limit that Libpp was built with - by default, this limit is 128. If you want to accept more or less, build Libpp with the `LIBPP_LIMIT` set to your desired value: e.g: `LIBPP_LIMIT=256 make -B libpp`.
-
-[Questions](https://github.com/mcinglis/libmacro/labels/question), [discussion](https://github.com/mcinglis/libmacro/labels/discussion), [bug reports](https://github.com/mcinglis/libmacro/labels/bug), [feature requests](https://github.com/mcinglis/libmacro/labels/enhancement), and pull requests are very welcome.
+Note that the functions relying on Libpp for dealing with variable arguments (e.g. `REQUIRE` and `ANY`) can only take as many arguments as the limit that Libpp was built with - by default, this limit is 128.
 
 
 ## Releases
@@ -43,11 +41,25 @@ pass: require
 ```
 
 
+## Dependencies
+
+`Package.json` specifies the dependencies of Libmacro: where to get them, and what version to use. I've developed a tool called [Puck](https://gitorious.org/mcinglis/puck) that will parse such a `Package.json`, download the specified repositories, check out the specified version, and, if the dependency has its own `Package.json`, repeat that process for *its* dependencies.
+
+There's nothing magic to what Puck does, so if you would prefer, you can perform those steps manually. You just need to have the dependencies in the `deps` directory within the Libmacro directory, and have them built (if necessary) before building Libmacro.
+
+
+## Collaboration
+
+Libmacro is available at [Gitorious](https://gitorious.org/mcinglis/libmacro), [Bitbucket](https://bitbucket.org/mcinglis/libmacro), and [GitHub](https://github.com/mcinglis/libmacro).
+
+Questions, discussion, bug reports and feature requests are welcome at [the GitHub issue tracker](https://github.com/mcinglis/libmacro/issues), or via [emails](mailto:me@minglis.id.au).
+
+To contribute changes, you're welcome to [email me](mailto:me@minglis.id.au) patches as per `git format-patch`, or to send me a pull request on any of the aforementioned sites. You're also welcome to just send me a link to your remote repository, and I'll merge stuff from that as I want to.
+
+To accept notable contributions, I'll require you to assign your copyright to me. In your email/pull request and commit messages, please insert: "*I hereby irrevocably transfer to Malcolm Inglis (http://minglis.id.au) all copyrights, title, and interest, throughout the world, in these contributions to Libmacro*". If you can, please sign the email or pull request, ensuring your GPG key is publicly available.
+
+
 ## Q&A
-
-### What's all that dependency stuff in the Makefile?
-
-It automates the fetching of the dependencies, checking out the right versions, and building them. In a similar way, you could specify Libmacro as a dependency, but override the `$DEPS_ROOT` environment variable to download it into the top-level directory. Thus, sub-dependencies are hidden and build processes are decoupled.
 
 ### Why don't you namespace this stuff?
 

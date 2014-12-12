@@ -1,0 +1,13 @@
+{
+    "dependencies": [
+        { "repo": "https://gitorious.org/mcinglis/libpp.git",
+          "tag":  "v2.*" },
+        { "repo": "https://gitorious.org/mcinglis/libtypes.git",
+          "tag":  "v2.*" }
+    ],
+    "commands": {
+        "build": "make",
+        "test":  "make test",
+        "clean": "make clean"
+    }
+}
