@@ -29,7 +29,10 @@ test_binaries := $(basename $(test_sources))
 ##############################
 
 .PHONY: all
-all: objects tests
+all: slice.h objects tests
+
+slice.h: slice-template.h
+	$(DEPS_DIR)/libpp/templates/render.py 128 $< > $@
 
 .PHONY: objects
 objects: $(objects)

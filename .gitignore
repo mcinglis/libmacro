@@ -1,3 +1,4 @@
+slice.h
 *.o
 *.dep.mk
 .make
