@@ -40,6 +40,7 @@ pass: debug
 pass: logic
 pass: nelem
 pass: require
+pass: slice
 ```
 
 

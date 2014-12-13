@@ -15,6 +15,8 @@ CFLAGS ?= -std=c11 -g -Og \
           -Wstrict-prototypes -Wunused-macros -Wvla -Wwrite-strings \
           -Wno-override-init -Wno-unused-parameter
 
+SLICE_LIMIT ?= 128
+
 sources := $(wildcard *.c)
 objects := $(sources:.c=.o)
 mkdeps  := $(objects:.o=.dep.mk)
@@ -32,7 +34,7 @@ test_binaries := $(basename $(test_sources))
 all: slice.h objects tests
 
 slice.h: slice-template.h
-	$(DEPS_DIR)/libpp/templates/render.py 128 $< > $@
+	$(DEPS_DIR)/libpp/templates/render.py $(SLICE_LIMIT) $< > $@
 
 .PHONY: objects
 objects: $(objects)

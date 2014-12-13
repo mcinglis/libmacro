@@ -21,6 +21,12 @@
 #define LIBMACRO_SLICE_H
 
 
+// Evaluates to the `LEN` elements of `XS` starting from index `FROM`.
+//
+//     SLICE( xs, 5, 3 )
+//     >>> xs[ 5 ], xs[ 6 ], xs[ 7 ]
+//
+// `LEN` must be a numeric literal between 0 and {limit}.
 #define SLICE( XS, FROM, LEN ) \
     PP_CONCAT( SLICE_, LEN )( XS, FROM )
 
@@ -34,12 +40,12 @@
 #####
 
 def context(limit):
+    impls = '#define SLICE_0(A,S)\n'
     slice_n = ('#define SLICE_{n}(A,S) \\\n'
                '    {body}\n')
-    impls = ''
     body = '(A)[(S)]'
     for i in range(1, limit+1):
         impls += slice_n.format(n=i, body=body)
-        body += ' (A)[(S)+{}]'.format(i)
+        body += ', (A)[(S)+{}]'.format(i)
     return {'impls': impls}
 
