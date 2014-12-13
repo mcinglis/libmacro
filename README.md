@@ -46,7 +46,12 @@ pass: slice
 
 ## Dependencies
 
-`Package.json` specifies the dependencies of Libmacro: where to get them, and what version to use. I've developed a tool called [Puck](https://gitorious.org/mcinglis/puck) that will parse such a `Package.json`, download the specified repositories, check out the specified version, and, if the dependency has its own `Package.json`, repeat that process for *its* dependencies.
+`Package.json` specifies the dependencies of Libmacro: where to get them, and what version to use. I've developed a tool called [Puck](https://gitorious.org/mcinglis/puck) that will parse such a `Package.json`, download the specified repositories, check out the specified version, and, if the dependency has its own `Package.json`, repeat that process for *its* dependencies. With `puck` on your PATH, in the directory of Libmacro:
+
+``` sh
+$ puck update
+$ puck execute build
+```
 
 There's nothing magic to what Puck does, so if you would prefer, you can perform those steps manually. You just need to have the dependencies in the `deps` directory within the Libmacro directory, and have them built (if necessary) before building Libmacro.
 
