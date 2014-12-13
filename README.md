@@ -15,6 +15,8 @@
 
 - `DEBUG("value = %d", x)` provides an easy way to print debugging statements that include the file, line and function they were made on. If you find yourself regularly inserting `printf()` calls to work out what a program is doing, you'll find `DEBUG` very handy.
 
+- `SLICE( xs, 4, 3 )` evalutes to `xs[ 4 ], xs[ 5 ], xs[ 6 ]`; it makes it easier to map sections of one array to sections of another (or a struct).
+
 Read the header files for more documentation on the provided macros. See the [`tests/`](tests/) directory for example usage of the macros, and the expected output.
 
 Note that the functions relying on Libpp for dealing with variable arguments (e.g. `REQUIRE` and `ANY`) can only take as many arguments as the limit that Libpp was built with - by default, this limit is 128.
