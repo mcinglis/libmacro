@@ -7,13 +7,15 @@ DEPS_DIR ?= ./deps
 
 CPPFLAGS += -I$(DEPS_DIR)
 
-CFLAGS ?= -std=c11 -g -Og \
-          -Wall -Wextra -Wpedantic \
-          -Wcomments -Wformat=2 -Wjump-misses-init -Wlogical-op \
-          -Wmissing-include-dirs -Wnested-externs \
-          -Wold-style-definition -Wredundant-decls -Wshadow \
-          -Wstrict-prototypes -Wunused-macros -Wvla -Wwrite-strings \
-          -Wno-override-init -Wno-unused-parameter
+cflags_std := -std=c11
+cflags_warnings := -Wall -Wextra -Wpedantic \
+                   -Wcomments -Wformat=2 -Wjump-misses-init -Wlogical-op \
+                   -Wmissing-include-dirs -Wnested-externs \
+                   -Wold-style-definition -Wredundant-decls -Wshadow \
+                   -Wstrict-prototypes -Wunused-macros -Wvla -Wwrite-strings \
+                   -Wno-override-init -Wno-unused-parameter
+
+CFLAGS ?= $(cflags_std) -g -Og $(cflags_warnings)
 
 SLICE_LIMIT ?= 128
 
@@ -33,6 +35,11 @@ test_binaries := $(basename $(test_sources))
 .PHONY: all
 all: slice.h objects tests
 
+.PHONY: fast
+fast: CPPFLAGS += -DNDEBUG -DNO_ASSERT -DNO_REQUIRE -DNO_DEBUG
+fast: CFLAGS = $(cflags_std) -O3 $(cflags_warnings)
+fast: all
+
 slice.h: slice-template.h
 	$(DEPS_DIR)/libpp/templates/render.py $(SLICE_LIMIT) $< > $@
 
@@ -41,6 +48,7 @@ objects: $(objects)
 
 .PHONY: tests
 tests: $(test_binaries)
+
 tests/alloc: alloc.o
 tests/require: require.o
 
@@ -50,7 +58,7 @@ test: tests
 
 .PHONY: clean
 clean:
-	rm -rf $(objects) $(test_objects) $(test_binaries) $(mkdeps)
+	rm -rf slice.h $(objects) $(test_objects) $(test_binaries) $(mkdeps)
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(CPPFLAGS) -MMD -MF "$(@:.o=.dep.mk)" -c $< -o $@
