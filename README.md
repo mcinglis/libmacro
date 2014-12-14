@@ -1,9 +1,9 @@
 
-**[Libmacro](https://github.com/mcinglis/libmacro)** provides some useful C preprocessor macros:
+**Libmacro** provides useful C preprocessor macros:
 
 - `ASSERT(...)` takes a series of scalar expressions and `assert()`s each one individually.
 
-- `REQUIRE(...)` is similar to `ASSERT`, but it has a specific error message ("requirement unmet"), and it can be enabled and disabled separately. The intended usage of this is to define the requirements your functions have of their arguments; e.g. `REQUIRE(xs != NULL, n < xs.capacity)`.
+- `REQUIRE(...)` is similar to `ASSERT`, but it has a specific error message ("requirement unmet"), and it can be enabled and disabled separately. The intended usage of this is to define the requirements your functions have of their arguments; e.g. `REQUIRE(xs != NULL, n < xs->capacity)`.
 
 - `NELEM(xs)` evaluates to a constant expression of the number of elements in the array variable `xs`.
 
@@ -11,11 +11,11 @@
 
 - `FREE(...)` takes a series of pointers to allocated memory, and `free()`s each one individually.
 
-- `ANY(...)`, `ALL(...)`, and `NONE(...)` take a series of scalar expressions, and logically evaluate them according to the short-circuiting behavior of `&&` and `||`. For example, `ALL(a,b,c,d)` will only evaluate `a`, `b` and `c` if `c` is false.
+- `ANY(...)`, `ALL(...)`, and `NONE(...)` take a series of scalar expressions, and logically evaluate them according to the short-circuiting behavior of `&&` and `||`. For example, `ALL(a, b, c)` will only evaluate `a` and `b` if `b` is falsy.
 
 - `DEBUG("value = %d", x)` provides an easy way to print debugging statements that include the file, line and function they were made on. If you find yourself regularly inserting `printf()` calls to work out what a program is doing, you'll find `DEBUG` very handy.
 
-- `SLICE( xs, 4, 3 )` evalutes to `xs[ 4 ], xs[ 5 ], xs[ 6 ]`; it makes it easier to map sections of one array to sections of another (or a struct).
+- `SLICE(xs, 4, 3)` evalutes to `xs[ 4 ], xs[ 5 ], xs[ 6 ]`; it makes it easier to map sections of one array to sections of another (or a struct).
 
 Read the header files for more documentation on the provided macros. See the [`tests/`](tests/) directory for example usage of the macros, and the expected output.
 
@@ -29,21 +29,6 @@ I'll tag the releases according to [semantic versioning](http://semver.org/spec/
 Every version tag will be signed with [my GPG key](http://pool.sks-keyservers.net/pks/lookup?op=vindex&search=0xD020F814) (fingerprint: `0xD020F814`).
 
 
-## Tests
-
-```
-$ make test
-./tests/run.bash 2>/dev/null
-pass: alloc
-pass: assert
-pass: debug
-pass: logic
-pass: nelem
-pass: require
-pass: slice
-```
-
-
 ## Dependencies
 
 `Package.json` specifies the dependencies of Libmacro: where to get them, and what version to use. I've developed a tool called [Puck](https://gitorious.org/mcinglis/puck) that will parse such a `Package.json`, download the specified repositories, check out the specified version, and, if the dependency has its own `Package.json`, repeat that process for *its* dependencies. With `puck` on your PATH, in the directory of Libmacro:
@@ -53,7 +38,7 @@ $ puck update
 $ puck execute build
 ```
 
-There's nothing magic to what Puck does, so if you would prefer, you can perform those steps manually. You just need to have the dependencies in the `deps` directory within the Libmacro directory, and have them built (if necessary) before building Libmacro.
+There's nothing magic to what Puck does, so if you would prefer, you can set up the dependencies manually. You just need to have the dependencies in the `deps` directory within the Libmacro directory, and have them built (if necessary) before building Libmacro.
 
 
 ## Collaboration
