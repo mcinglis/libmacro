@@ -8,14 +8,14 @@ DEPS_DIR ?= ./deps
 CPPFLAGS += -I$(DEPS_DIR)
 
 cflags_std := -std=c11
-cflags_warnings := -Wall -Wextra -Wpedantic \
+cflags_warnings := -Wall -Wextra -pedantic \
                    -Wcomments -Wformat=2 -Wjump-misses-init -Wlogical-op \
                    -Wmissing-include-dirs -Wnested-externs \
                    -Wold-style-definition -Wredundant-decls -Wshadow \
                    -Wstrict-prototypes -Wunused-macros -Wvla -Wwrite-strings \
                    -Wno-override-init -Wno-unused-parameter
 
-CFLAGS ?= $(cflags_std) -g -Og $(cflags_warnings)
+CFLAGS ?= $(cflags_std) -g $(cflags_warnings)
 
 SLICE_LIMIT ?= 128
 
