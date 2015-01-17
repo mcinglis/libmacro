@@ -75,7 +75,7 @@ If you need to include six header files from Libmacro, your source file is proba
 
 ## License
 
-**Copyright 2014 Malcolm Inglis <http://minglis.id.au>**
+**Copyright 2015 Malcolm Inglis <http://minglis.id.au>**
 
 Libmacro is free software: you can redistribute it and/or modify it under the terms of the [GNU Affero General Public License](https://gnu.org/licenses/agpl.html) as published by the [Free Software Foundation](https://fsf.org), either version 3 of the License, or (at your option) any later version.
 

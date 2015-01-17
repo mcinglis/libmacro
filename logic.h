@@ -1,5 +1,5 @@
 
-// Copyright 2014  Malcolm Inglis <http://minglis.id.au>
+// Copyright 2015  Malcolm Inglis <http://minglis.id.au>
 //
 // This file is part of Libmacro.
 //
