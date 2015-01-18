@@ -17,6 +17,10 @@
 
 - `SLICE(xs, 4, 3)` evalutes to `xs[ 4 ], xs[ 5 ], xs[ 6 ]`; it makes it easier to map sections of one array to sections of another (or a struct).
 
+- `MIN(1, 2, 3, 4)` gives the minimum value of multiple given expressions, and `MAX(12, 34, 56)` gives the maximum value of multiple given expressions.
+
+- `CLAMP(2, x, 42)` returns `x` but lower-bounded by `2` and upper-bounded by `42` -- if `x == 85`, this `CLAMP` call will give `42`.
+
 Read the header files for more documentation on the provided macros. See the [`tests/`](tests/) directory for example usage of the macros, and the expected output.
 
 Note that the functions relying on Libpp for dealing with variable arguments (e.g. `REQUIRE` and `ANY`) can only take as many arguments as the limit that Libpp was built with - by default, this limit is 128.
