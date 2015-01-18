@@ -8,6 +8,7 @@ main() {
     local dir="$(dirname "$0")"
     run_test "$dir" alloc
     run_test "$dir" assert
+    run_test "$dir" clamp
     run_test "$dir" debug
     run_test "$dir" logic
     run_test "$dir" minmax
