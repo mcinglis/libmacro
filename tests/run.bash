@@ -6,15 +6,9 @@ set -o nounset
 
 main() {
     local dir="$(dirname "$0")"
-    run_test "$dir" alloc
-    run_test "$dir" assert
-    run_test "$dir" clamp
-    run_test "$dir" debug
-    run_test "$dir" logic
-    run_test "$dir" minmax
-    run_test "$dir" nelem
-    run_test "$dir" require
-    run_test "$dir" slice
+    for src in "$dir/"*.c; do
+        run_test "$dir" "$(basename -s .c "$src")"
+    done
 }
 
 run_test() {
