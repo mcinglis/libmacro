@@ -4,10 +4,16 @@ set -o errexit
 set -o pipefail
 set -o nounset
 
+path_to_name() {
+    local x="${1%.*}"
+    local y="${x##*/}"
+    echo "$y"
+}
+
 main() {
     local dir="$(dirname "$0")"
     for src in "$dir/"*.c; do
-        run_test "$dir" "$(basename -s .c "$src")"
+        run_test "$dir" "$(path_to_name "$src")"
     done
 }
 
