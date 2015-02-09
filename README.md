@@ -25,7 +25,9 @@
 
 Read the header files for more documentation on the provided macros. See the [`tests/`](tests/) directory for example usage of the macros, and the expected output.
 
-Note that the functions relying on Libpp for dealing with variable arguments (e.g. `REQUIRE` and `ANY`) can only take as many arguments as the limit that Libpp was built with - by default, this limit is 128.
+Note that the functions relying on Libpp for dealing with variable arguments (e.g. `REQUIRE` and `ANY`) can only take as many arguments as the limit that Libpp was built with - by default, this limit is 128. The third argument of `SLICE` must be less than 128, but this limit can be changed by setting the `SLICE_LIMIT` environment variable at build-time.
+
+Libmacro conforms to ISO C11 and ISO C99.
 
 
 ## Releases
@@ -39,9 +41,10 @@ Every version tag will be signed with [my GPG key](http://pool.sks-keyservers.ne
 
 `Package.json` specifies the dependencies of Libmacro: where to get them, and what version to use. I've developed a tool called [Puck](https://gitorious.org/mcinglis/puck) that will parse such a `Package.json`, download the specified repositories, check out the specified version, and, if the dependency has its own `Package.json`, repeat that process for *its* dependencies. With `puck` on your PATH, in the directory of Libmacro:
 
-``` sh
+```
 $ puck update
 $ puck execute build
+$ puck execute test
 ```
 
 There's nothing magic to what Puck does, so if you would prefer, you can set up the dependencies manually. You just need to have the dependencies in the `deps` directory within the Libmacro directory, and have them built (if necessary) before building Libmacro.
@@ -62,7 +65,7 @@ To accept notable contributions, I'll require you to assign your copyright to me
 
 ### Why don't you namespace this stuff?
 
-These macros are generic and universally useful, so I don't any need to specify their names as belonging to Libmacro. It would be semantically awkward. The likelihood of name clashes are low anyway, particularly since the headers are decoupled so that you can include them individually as you require. Similarly, it should be fairly obvious where each macro came from.
+These macros are generic and universally useful, so I don't any need to specify their names as belonging to Libmacro. It would be semantically awkward. The likelihood of name clashes are low anyway; the headers are decoupled so that you can include them individually as you require. Similarly, it should be fairly obvious where each macro came from.
 
 If you really need a different name for an identifier, maintain a fork of the repository and pull updates from this one as you want them.
 

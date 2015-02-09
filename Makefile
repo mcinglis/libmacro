@@ -17,6 +17,8 @@ cflags_warnings := -Wall -Wextra -pedantic \
 
 CFLAGS ?= $(cflags_std) -g $(cflags_warnings)
 
+PYTHON ?= python
+
 SLICE_LIMIT ?= 128
 
 sources := $(wildcard *.c)
@@ -41,7 +43,7 @@ fast: CFLAGS = $(cflags_std) -O3 $(cflags_warnings)
 fast: all
 
 slice.h: slice-template.h
-	$(DEPS_DIR)/libpp/templates/render.py $(SLICE_LIMIT) $< > $@
+	$(PYTHON) $(DEPS_DIR)/libpp/templates/render.py $(SLICE_LIMIT) "$<" -o "$@"
 
 .PHONY: objects
 objects: $(objects)
