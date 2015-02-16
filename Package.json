@@ -3,7 +3,7 @@
         { "repo": "https://gitorious.org/mcinglis/libpp.git",
           "tag":  "v2.*" },
         { "repo": "https://gitorious.org/mcinglis/libtypes.git",
-          "tag":  "v2.*" }
+          "tag":  "v3.*" }
     ],
     "commands": {
         "build": "make",
