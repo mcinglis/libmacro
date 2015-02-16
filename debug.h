@@ -26,7 +26,7 @@
 #include <libpp/concat.h>
 
 
-#ifdef NO_DEBUG
+#ifdef NDEBUG
     #define DEBUG( ... )
 #else
 

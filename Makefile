@@ -38,7 +38,7 @@ test_binaries := $(basename $(test_sources))
 all: slice.h objects tests
 
 .PHONY: fast
-fast: CPPFLAGS += -DNDEBUG -DNO_ASSERT -DNO_REQUIRE -DNO_DEBUG
+fast: CPPFLAGS += -DNDEBUG
 fast: CFLAGS = $(cflags_std) -O3 $(cflags_warnings)
 fast: all
 

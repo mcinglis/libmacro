@@ -3,8 +3,6 @@
 
 - `ASSERT(...)` takes a series of scalar expressions and `assert()`s each one individually.
 
-- `REQUIRE(...)` is similar to `ASSERT`, but it has a specific error message ("requirement unmet"), and it can be enabled and disabled separately. The intended usage of this is to define the requirements your functions have of their arguments; e.g. `REQUIRE(xs != NULL, n < xs->capacity)`.
-
 - `NELEM(xs)` evaluates to a constant expression of the number of elements in the array variable `xs`.
 
 - `ALLOC(Widget, .foo=42, .bar="wow")` provides an easy way to allocate memory with specific values, rather than having to do it in separate steps.
@@ -25,7 +23,7 @@
 
 Read the header files for more documentation on the provided macros. See the [`tests/`](tests/) directory for example usage of the macros, and the expected output.
 
-Note that the functions relying on Libpp for dealing with variable arguments (e.g. `REQUIRE` and `ANY`) can only take as many arguments as the limit that Libpp was built with - by default, this limit is 128. The third argument of `SLICE` must be less than 128, but this limit can be changed by setting the `SLICE_LIMIT` environment variable at build-time.
+Note that the functions relying on Libpp for dealing with variable arguments (e.g. `ASSERT` and `ANY`) can only take as many arguments as the limit that Libpp was built with - by default, this limit is 128. The third argument of `SLICE` must be less than 128, but this limit can be changed by setting the `SLICE_LIMIT` environment variable at build-time.
 
 Libmacro conforms to ISO C11 and ISO C99.
 

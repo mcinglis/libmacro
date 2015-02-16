@@ -27,18 +27,12 @@
 #include <libpp/separators.h>   // PP_SEP_SEMICOLON
 
 
-#ifdef NO_ASSERT
-    #define ASSERT( ... )
-#else
-
-    // @public
-    // Takes a variable number of scalar expressions, and `assert`s each
-    // one individually. This provides better assertion error reporting than
-    // techniques like `assert( e1 && e2 && ... )`.
-    #define ASSERT( ... ) \
-        PP_MAP( assert, PP_SEP_SEMICOLON, __VA_ARGS__ )
-
-#endif
+// @public
+// Takes a variable number of scalar expressions, and `assert`s each
+// one individually. This provides better assertion error reporting than
+// techniques like `assert( e1 && e2 && ... )`.
+#define ASSERT( ... ) \
+    PP_MAP( assert, PP_SEP_SEMICOLON, __VA_ARGS__ )
 
 
 #endif
