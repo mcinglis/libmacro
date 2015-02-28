@@ -24,8 +24,8 @@
 // Gives the number of elements in the array `XS`. Be very careful that
 // you only call this with an *array* variable, and not a pointer-to-array.
 // Note that this evaluates to a constant expression.
-#define NELEM( XS ) \
-    ( ( sizeof ( XS ) ) / ( sizeof ( ( XS )[ 0 ] ) ) )
+#define NELEM( ... ) \
+    ( ( sizeof ( __VA_ARGS__ ) ) / ( sizeof ( ( __VA_ARGS__ )[ 0 ] ) ) )
 
 
 #endif
