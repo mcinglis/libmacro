@@ -21,14 +21,9 @@
 #define LIBMACRO_COMPARE_H
 
 
-// @public begin
-
-
+// @public
 #define COMPARE( X, Y ) \
     ( ( ( X ) > ( Y ) ) - ( ( X ) < ( Y ) ) )
-
-
-// @public end
 
 
 #endif
