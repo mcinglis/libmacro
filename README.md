@@ -50,7 +50,7 @@ There's nothing magic to what Puck does, so if you would prefer, you can set up 
 
 ## Collaboration
 
-Libmacro is available at [Gitorious](https://gitorious.org/mcinglis/libmacro), [Bitbucket](https://bitbucket.org/mcinglis/libmacro), and [GitHub](https://github.com/mcinglis/libmacro).
+Libmacro is available at [Bitbucket](https://bitbucket.org/mcinglis/libmacro) and [GitHub](https://github.com/mcinglis/libmacro).
 
 Questions, discussion, bug reports and feature requests are welcome at [the GitHub issue tracker](https://github.com/mcinglis/libmacro/issues), or via [emails](mailto:me@minglis.id.au).
 

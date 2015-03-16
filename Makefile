@@ -25,9 +25,7 @@ sources := $(wildcard *.c)
 objects := $(sources:.c=.o)
 mkdeps  := $(objects:.o=.dep.mk)
 
-test_sources  := $(wildcard tests/*.c)
-test_objects  := $(test_sources:.c=.o)
-test_binaries := $(basename $(test_sources))
+test_binaries := $(basename $(wildcard tests/*.c))
 
 
 ##############################
@@ -35,7 +33,7 @@ test_binaries := $(basename $(test_sources))
 ##############################
 
 .PHONY: all
-all: slice.h objects tests
+all: objects tests
 
 .PHONY: fast
 fast: CPPFLAGS += -DNDEBUG
@@ -43,7 +41,7 @@ fast: CFLAGS = $(cflags_std) -O3 $(cflags_warnings)
 fast: all
 
 slice.h: slice-template.h
-	$(PYTHON) $(DEPS_DIR)/libpp/templates/render.py $(SLICE_LIMIT) "$<" -o "$@"
+	$(PYTHON) $(DEPS_DIR)/libpp/templates/render.py $(SLICE_LIMIT) $< -o $@
 
 .PHONY: objects
 objects: $(objects)
@@ -51,6 +49,7 @@ objects: $(objects)
 .PHONY: tests
 tests: $(test_binaries)
 
+tests/slice: | slice.h
 tests/alloc: alloc.o
 tests/require: require.o
 
@@ -60,7 +59,7 @@ test: tests
 
 .PHONY: clean
 clean:
-	rm -rf slice.h $(objects) $(test_objects) $(test_binaries) $(mkdeps)
+	rm -rf slice.h $(objects) $(test_binaries) $(mkdeps)
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(CPPFLAGS) -MMD -MF "$(@:.o=.dep.mk)" -c $< -o $@
