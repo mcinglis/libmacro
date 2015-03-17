@@ -1,9 +1,15 @@
 {
     "dependencies": [
-        { "repo": "https://gitorious.org/mcinglis/libpp.git",
-          "tag":  "v2.*" },
-        { "repo": "https://gitorious.org/mcinglis/libtypes.git",
-          "tag":  "v3.*" }
+        { "repo": [ "https://bitbucket.org/mcinglis/libpp.git",
+                    "https://github.com/mcinglis/libpp.git",
+                    "https://gitorious.org/mcinglis/libpp.git" ],
+          "tag":  "v2.*"
+        },
+        { "repo": [ "https://bitbucket.org/mcinglis/libtypes.git",
+                    "https://github.com/mcinglis/libtypes.git",
+                    "https://gitorious.org/mcinglis/libtypes.git" ],
+          "tag":  "v3.*"
+        }
     ],
     "commands": {
         "build": "make",
