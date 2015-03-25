@@ -17,7 +17,7 @@
 
 - `MIN(1, 2, 3, 4)` gives the minimum value of multiple given expressions, and `MAX(12, 34, 56)` gives the maximum value of multiple given expressions.
 
-- `CLAMP(2, x, 42)` returns `x` but lower-bounded by `2` and upper-bounded by `42` -- if `x == 85`, this `CLAMP` call will give `42`.
+- `CLAMP(x, 2, 42)` returns `x` but lower-bounded by `2` and upper-bounded by `42` -- if `x == 85`, this `CLAMP` expression will give `42`.
 
 - `COMPARE(x, y)` returns `1` if `x > y`, `0` if `x == y`, or `-1` if `x < y`.
 
