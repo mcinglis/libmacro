@@ -24,7 +24,7 @@
 // @public begin
 
 
-#define CLAMP( LOWER, X, UPPER ) \
+#define CLAMP( X, LOWER, UPPER ) \
     ( ( ( X ) < ( LOWER ) ) ? ( LOWER ) \
     : ( ( X ) > ( UPPER ) ) ? ( UPPER ) \
                             : ( X ) )

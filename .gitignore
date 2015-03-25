@@ -4,4 +4,6 @@ slice.h
 .make
 deps
 tests/*
-!tests/*.*
+!tests/run.bash
+!tests/*.c
+!tests/*.out

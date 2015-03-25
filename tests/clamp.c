@@ -8,10 +8,13 @@
 int main( void )
 {
     printf( "Running tests...\n" );
-    ASSERT( CLAMP( 5, 10, 20 ) == 10,
-            CLAMP( 5, 20, 20 ) == 20,
-            CLAMP( 5, 25, 20 ) == 20,
-            CLAMP( 5, 5,  20 ) == 5,
-            CLAMP( 5, 3,  20 ) == 5 );
+    ASSERT( CLAMP( -1, 0, 10 ) == 0,
+            CLAMP( 0, 0, 10 ) == 0,
+            CLAMP( 1, 0, 10 ) == 1,
+            CLAMP( 9, 0, 10 ) == 9,
+            CLAMP( 10, 0, 10 ) == 10,
+            CLAMP( 11, 0, 10 ) == 10,
+            CLAMP( 5, 5, 5 ) == 5,
+            CLAMP( 5, 10, 0 ) == 10 );
 }
 
