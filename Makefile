@@ -13,7 +13,7 @@ cflags_warnings := -Wall -Wextra -pedantic \
                    -Wmissing-include-dirs -Wnested-externs \
                    -Wold-style-definition -Wredundant-decls -Wshadow \
                    -Wstrict-prototypes -Wunused-macros -Wvla -Wwrite-strings \
-                   -Wno-override-init -Wno-unused-parameter
+                   -Wno-override-init -Wno-type-limits -Wno-unused-parameter
 
 CFLAGS ?= $(cflags_std) -g $(cflags_warnings)
 

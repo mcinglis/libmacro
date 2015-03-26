@@ -19,6 +19,8 @@
 
 - `CLAMP(x, 2, 42)` returns `x` but lower-bounded by `2` and upper-bounded by `42` -- if `x == 85`, this `CLAMP` expression will give `42`.
 
+- `CLAMP_TO_INTMAX(x)` returns `x` as an `intmax_t` value, bounded by `INTMAX_MIN` and `INTMAX_MAX`, and works with unsigned expressions.
+
 - `COMPARE(x, y)` returns `1` if `x > y`, `0` if `x == y`, or `-1` if `x < y`.
 
 Read the header files for more documentation on the provided macros. See the [`tests/`](tests/) directory for example usage of the macros, and the expected output.

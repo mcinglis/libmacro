@@ -21,6 +21,9 @@
 #define LIBMACRO_CLAMP_H
 
 
+#include <limits.h>
+
+
 // @public begin
 
 
@@ -28,6 +31,10 @@
     ( ( ( X ) < ( LOWER ) ) ? ( LOWER ) \
     : ( ( X ) > ( UPPER ) ) ? ( UPPER ) \
                             : ( X ) )
+
+
+#define CLAMP_TO_INTMAX( X ) \
+    ( ( intmax_t ) CLAMP( X, ( X < 0 ) ? INTMAX_MIN : 0, INTMAX_MAX ) )
 
 
 // @public end
