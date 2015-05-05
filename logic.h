@@ -35,6 +35,9 @@
 #define NAND( X, Y )        ( !AND( X, Y ) )
 #define NOR( X, Y )         ( !OR( X, Y ) )
 
+// Take `X` if `X` is nonzero, or if not, whatever `Y` is.
+#define EOR( X, Y )         ( ( X ) ? ( X ) : ( Y ) )
+
 // May clarify meaning in source code:
 #define IMPLIES( X, Y )     ( !( X ) || ( Y ) )
 
